@@ -12,7 +12,7 @@
 function convertTimeToWords(time) {
   // TODO: real code goes here!
 
-  let [hours, minutes] = time.split(":");
+  let [hours, minutes] = time.split(":").map(v=>parseInt(v));
   let minutesWord, joinWord, hourWord;
 
   let time_map = {
@@ -38,7 +38,13 @@ function convertTimeToWords(time) {
 
     11: 'eleven',
 
-    12: 'twelve'
+    12: 'twelve',
+
+    15: 'quarter',
+
+    30: 'half',
+
+    25: 'twenty five',
 
 }
 
@@ -60,12 +66,15 @@ function convertTimeToWords(time) {
     let remainMinutes = 60 - minutes;
     minutesWord =  remainMinutes == 30 ? 'half' : remainMinutes == 15 ? 'quarter' : remainMinutes;
     joinWord = 'to';
-    hourWord = parseInt(hours) + 1;
-    return `${minutesWord} ${joinWord} ${time_map[hourWord]}`
+    hourWord = time_map[hours+1];
+    return `${minutesWord} ${joinWord} ${hourWord}`
   }
 
    if(minutes <= 30){
-    
+    minutesWord = time_map[minutes];
+    joinWord = 'past';
+    hourWord = time_map[hours];
+    return `${minutesWord} ${joinWord} ${hourWord}`
    }
 
   return 'half past eight';
