@@ -20,4 +20,24 @@ describe('Time to words', () => {
     const timeInWords = convertTimeToWords('2:25');
     expect(timeInWords).toBe('twenty five past two');
   });
+
+  it('Handles 2 o\'clock', () => {
+    const timeInWords = convertTimeToWords('2:00');
+    expect(timeInWords).toBe('two o\'clock');
+  });
+
+  it('Handles 2:15', () => {
+    const timeInWords = convertTimeToWords('2:15');
+    expect(timeInWords).toBe('quarter past two');
+  });
+
+  it('Handles 2:55', () => {
+    const timeInWords = convertTimeToWords('2:55');
+    expect(timeInWords).toBe('five to three');
+  });
+
+  it('Handles 12:00', () => {
+    const timeInWords = convertTimeToWords('12:00');
+    expect(timeInWords).toBe('midday');
+  });
 });

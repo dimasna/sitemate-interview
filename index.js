@@ -64,7 +64,7 @@ function convertTimeToWords(time) {
 
   if(minutes > 30){
     let remainMinutes = 60 - minutes;
-    minutesWord =  remainMinutes == 30 ? 'half' : remainMinutes == 15 ? 'quarter' : remainMinutes;
+    minutesWord =  remainMinutes == 30 ? 'half' : remainMinutes == 15 ? 'quarter' : time_map[remainMinutes];
     joinWord = 'to';
     hourWord = time_map[hours+1];
     return `${minutesWord} ${joinWord} ${hourWord}`
